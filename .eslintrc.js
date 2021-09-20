@@ -1,0 +1,97 @@
+module.exports = {
+  env: {
+    browser: true,
+    es2021: true,
+  },
+  extends: [
+    'plugin:react/recommended',
+    'airbnb',
+    '@react-native-community',
+    'plugin:import/recommended',
+    'prettier',
+  ],
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
+    },
+    ecmaVersion: 12,
+    sourceType: 'module',
+  },
+  plugins: ['react', 'react-hooks', 'import'],
+  rules: {
+    'react/jsx-props-no-spreading': 'off',
+    'no-alert': 'off',
+    'no-console': 'off',
+    'react/sort-comp': 'off',
+    'react/no-did-mount-set-state': 'off',
+    'no-debugger': 'off',
+    'global-require': 'off',
+    'no-restricted-globals': 'off',
+    'react/forbid-prop-types': 'off',
+    'react/require-default-props': 'off',
+    'react/prefer-stateless-function': 'off',
+    'import/no-extraneous-dependencies': 'off',
+    'import/no-named-as-default-member': 'off',
+    'import/prefer-default-export': 'off',
+    'import/order': [
+      'error',
+      {
+        groups: [
+          'builtin',
+          'external',
+          'internal',
+          'parent',
+          'sibling',
+          'index',
+        ],
+        'newlines-between': 'always',
+      },
+    ],
+    'import/first': 'off',
+    'max-len': [
+      'error',
+      120,
+      {
+        ignoreTemplateLiterals: true,
+        ignoreUrls: true,
+      },
+    ],
+    'no-unused-expressions': [
+      'error',
+      {
+        allowShortCircuit: true,
+      },
+    ],
+    'no-underscore-dangle': 'off',
+    'prefer-promise-reject-errors': 'off',
+    'linebreak-style': 'off',
+    'no-plusplus': 'off',
+    'no-nested-ternary': 'off',
+    'no-lonely-if': 'off',
+    'react/no-string-refs': [0],
+    'react/jsx-no-bind': [0],
+
+    'react/jsx-filename-extension': ['warn', {extensions: ['.jsx']}],
+    'import/extensions': [
+      'error',
+      'ignorePackages',
+      {
+        js: 'never',
+        jsx: 'never',
+      },
+    ],
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'warn',
+    'react/prop-types': 'off',
+    'no-param-reassign': 'off',
+    'implicit-arrow-linebreak': 'off',
+    'arrow-body-style': [
+      'error',
+      'as-needed',
+      {requireReturnForObjectLiteral: true},
+    ],
+    'operator-linebreak': 'off',
+    'no-useless-escape': 'off',
+    'object-curly-newline': 'off',
+  },
+};

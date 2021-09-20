@@ -1,0 +1,20 @@
+{
+  "extends": ["stylelint-config-rational-order"],
+  "plugins": [
+    "stylelint-react-native",
+    "stylelint-order",
+    "stylelint-config-rational-order/plugin"
+  ],
+  "rules": {
+    "order/properties-alphabetical-order": null,
+    "plugin/rational-order": [
+      true,
+      {
+        "border-in-box-model": true,
+        "empty-line-between-groups": true
+      }
+    ],
+    "property-no-unknown": null,
+    "react-native/css-property-no-unknown": true
+  }
+}
