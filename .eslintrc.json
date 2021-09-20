@@ -4,13 +4,7 @@
     "browser": true,
     "es2021": true
   },
-  "extends": [
-    "plugin:react/recommended",
-    "airbnb",
-    "@react-native-community",
-    "plugin:import/recommended",
-    "prettier"
-  ],
+  "extends": ["plugin:react/recommended", "airbnb", "@react-native-community", "plugin:import/recommended", "prettier"],
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
@@ -28,17 +22,9 @@
         "map": [
           // And all your import aliases
           ["@", "./src"],
-          ["@Component", "./src/components"],
-          ["@Page", "./src/pages"],
-          ["@Constant", "./src/constants"],
-          ["@Slice", "./src/store/slices"],
-          ["@Store", "./src/store"],
-          ["@Util", "./src/utils"],
-          ["@Image", "./src/assets/images"],
-          ["@Icon", "./src/assets/icons"],
-          ["@Asset", "./src/assets"],
-          ["@Service", "./src/services"],
-          ["@Hoc", "./src/hoc"]
+          ["@Atom", "./src/components/atoms"],
+          ["@Screen", "./src/screens"],
+          ["@Style", "./src/styles"]
         ],
         "extensions": [".ts", ".tsx", ".js", ".jsx", ".json", ".native.js"]
       }
@@ -65,14 +51,7 @@
     "import/order": [
       "error",
       {
-        "groups": [
-          "builtin",
-          "external",
-          "internal",
-          "parent",
-          "sibling",
-          "index"
-        ],
+        "groups": ["builtin", "external", "internal", "parent", "sibling", "index"],
         "newlines-between": "always"
       }
     ],
@@ -100,7 +79,7 @@
     "react/no-string-refs": [0],
     "react/jsx-no-bind": [0],
 
-    "react/jsx-filename-extension": ["warn", {"extensions": [".jsx"]}],
+    "react/jsx-filename-extension": ["warn", { "extensions": [".jsx"] }],
     "import/extensions": [
       "error",
       "ignorePackages",
@@ -114,13 +93,10 @@
     "react/prop-types": "off",
     "no-param-reassign": "off",
     "implicit-arrow-linebreak": "off",
-    "arrow-body-style": [
-      "error",
-      "as-needed",
-      {"requireReturnForObjectLiteral": true}
-    ],
+    "arrow-body-style": ["error", "as-needed", { "requireReturnForObjectLiteral": true }],
     "operator-linebreak": "off",
     "no-useless-escape": "off",
-    "object-curly-newline": "off"
+    "object-curly-newline": "off",
+    "react-native/no-inline-styles": "off"
   }
 }

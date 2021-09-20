@@ -109,6 +109,7 @@ package-lock.json
 # Visual studio
 .vscode
 .vs
+.fttemplates
 
 # Android memory profiler files
 *.hprof

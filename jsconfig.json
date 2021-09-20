@@ -2,20 +2,10 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
+      "@Atom/*": ["src/components/atoms/*"],
       "@Component/*": ["src/components/*"],
-      "@Constant/*": ["src/constants/*"],
-      "@Slice/*": ["src/store/slices/*"],
-      "@Store/*": ["src/store/*"],
-      "@Page/": ["src/pages/"],
-      "@Page/*": ["src/pages/*"],
-      "@Image/*": ["src/assets/images/*"],
-      "@Icons/*": ["src/assets/icons/*"],
-      "@Assets/*": ["src/assets/*"],
-      "@Util/*": ["src/utils/*"],
-      "@Service/*": ["src/services/*"],
-      "@Hoc/*": ["src/hoc/*"],
-      "@Mutation/*": ["src/hooks/apiHooks/mutations/*"],
-      "@Query/*": ["src/hooks/apiHooks/queries/*"]
+      "@Screen/*": ["src/screens/*"],
+      "@Style": ["src/styles"]
     }
   }
 }
