@@ -1,14 +1,33 @@
+import PropTypes from 'prop-types';
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
-const Typography = () => (
-  <View style={styles.container}>
-    <Text>Typography</Text>
+import { Colors } from '@Style';
+
+const Typography = ({ value, type, style }) => (
+  <View style={{ ...styles.container, ...style }}>
+    <Text style={styles[type]}>{value}</Text>
   </View>
 );
 
 const styles = StyleSheet.create({
   container: {},
+  headline: {
+    color: Colors.BLACK,
+    fontWeight: 'bold',
+    fontSize: 34,
+    lineHeight: 34,
+  },
+  text: {
+    fontSize: 14,
+    lineHeight: 20,
+  },
 });
+
+Typography.propTypes = {
+  value: PropTypes.string,
+  type: PropTypes.string,
+  style: PropTypes.object,
+};
 
 export default Typography;

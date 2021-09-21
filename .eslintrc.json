@@ -24,7 +24,8 @@
           ["@", "./src"],
           ["@Atom", "./src/components/atoms"],
           ["@Screen", "./src/screens"],
-          ["@Style", "./src/styles"]
+          ["@Style", "./src/styles"],
+          ["@Icon", "./src/assets/icons"]
         ],
         "extensions": [".ts", ".tsx", ".js", ".jsx", ".json", ".native.js"]
       }

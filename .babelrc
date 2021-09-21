@@ -10,7 +10,8 @@
           "@Atom": "./src/components/atoms",
           "@Component": "./src/components",
           "@Screen": "./src/screens",
-          "@Style": "./src/styles"
+          "@Style": "./src/styles",
+          "@Icon": "./src/assets/icons"
         }
       }
     ]

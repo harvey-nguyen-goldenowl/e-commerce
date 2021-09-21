@@ -1,70 +1,162 @@
-import React from 'react';
-import { Animated, StyleSheet, TextInput, View } from 'react-native';
+import PropTypes from 'prop-types';
+import React, { useState } from 'react';
+import { Animated, StyleSheet, Text, TextInput, View } from 'react-native';
+import Icon from 'react-native-vector-icons/AntDesign';
 
 import { Colors } from '@Style';
 
-const TextField = () => {
-  const [fontSize] = React.useState(new Animated.Value(20));
-  const [marginTop] = React.useState(new Animated.Value(22));
+const TextField = ({ value, handleChange, style, name, secureTextEntry, type, error, handleBlur }) => {
+  // Hook states
+  const [fontSize] = useState(new Animated.Value(14));
+  const [lineHeight] = useState(new Animated.Value(20));
+  const [height, setHeight] = useState(0);
+  const [top, setTop] = useState(new Animated.Value(height / 5));
 
-  const onFocus = () => {
+  // Constants
+  const animation = (
+    /** @type {number} */ fontSizeValue,
+    /** @type {number} */ lineHeightValue,
+    /** @type {number} */ topValue,
+  ) => {
     Animated.parallel([
       Animated.timing(fontSize, {
-        toValue: 11,
+        toValue: fontSizeValue,
         duration: 200,
         useNativeDriver: false,
       }),
-      Animated.timing(marginTop, {
-        toValue: 14,
+      Animated.timing(lineHeight, {
+        toValue: lineHeightValue,
+        duration: 200,
+        useNativeDriver: false,
+      }),
+      Animated.timing(top, {
+        toValue: topValue,
         duration: 200,
         useNativeDriver: false,
       }),
     ]).start();
   };
-  const onBlur = () => {
-    Animated.parallel([
-      Animated.timing(fontSize, {
-        toValue: 20,
-        duration: 200,
-        useNativeDriver: false,
-      }),
-      Animated.timing(marginTop, {
-        toValue: 22,
-        duration: 200,
-        useNativeDriver: false,
-      }),
-    ]).start();
+  // Action handlers
+  const focusHandle = () => {
+    animation(11, 11, height / 5);
   };
+  const blurHandle = () => {
+    handleBlur(name, true);
+    console.log(value);
+    if (value) animation(11, 11, height / 5);
+    else animation(14, 20, height / 3);
+  };
+  const layoutHandle = (/** @type {{ nativeEvent: { layout: { height: any; }; }; }} */ event) => {
+    const { height: textHeight } = event.nativeEvent.layout;
+    setHeight(textHeight);
+    setTop(new Animated.Value(textHeight / 3));
+  };
+
+  // Renderers
+  let icon = null;
+  const hasError = type === 'error';
+  if (type === 'success')
+    icon = (
+      <Icon name="check" size={20} color={Colors.GREEN} style={{ ...styles.check, transform: [{ translateY: -10 }] }} />
+    );
+  if (hasError)
+    icon = (
+      <Icon
+        name="close"
+        size={20}
+        color={Colors.ORANGE}
+        style={{ ...styles.check, transform: [{ translateY: -10 }] }}
+      />
+    );
+
   return (
-    <View style={styles.container}>
-      <TextInput style={styles.input} onFocus={onFocus} onBlur={onBlur} />
-      <Animated.Text style={{ ...styles.title, fontSize, top: marginTop }} onPress={onFocus}>
-        Name
-      </Animated.Text>
+    <View style={{ ...styles.container, ...style }}>
+      <View style={{ ...styles.inputContainer }}>
+        <TextInput
+          style={{
+            ...styles.textInput,
+            paddingTop: height / 2,
+            borderColor: hasError ? Colors.ORANGE : undefined,
+            borderWidth: hasError ? 1 : undefined,
+          }}
+          onFocus={focusHandle}
+          onBlur={blurHandle}
+          onLayout={layoutHandle}
+          onChangeText={handleChange(name)}
+          value={value}
+          secureTextEntry={secureTextEntry}
+        />
+        <Animated.Text
+          style={{ ...styles.label, fontSize, lineHeight, top, color: hasError ? Colors.ORANGE : Colors.GRAY }}
+          onPress={focusHandle}
+        >
+          {name}
+        </Animated.Text>
+        {icon}
+      </View>
+      <Text style={{ ...styles.errorText, height: hasError ? undefined : 0 }}>{hasError ? error : null}</Text>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
+    display: 'flex',
+    width: '100%',
+  },
+  inputContainer: {
     position: 'relative',
 
     width: '100%',
     height: 64,
+  },
+  textInput: {
+    height: '100%',
+    paddingLeft: 20,
+
+    borderRadius: 4,
+
+    fontSize: 14,
 
     backgroundColor: Colors.WHITE,
   },
-  input: {
-    height: '100%',
-  },
-  title: {
+  label: {
     position: 'absolute',
     left: 20,
 
     height: 20,
 
     color: Colors.GRAY,
+    textTransform: 'capitalize',
+  },
+  check: {
+    position: 'absolute',
+    top: '50%',
+    right: 20,
+  },
+  errorText: {
+    marginTop: 4,
+    marginBottom: 4,
+
+    paddingLeft: 20,
+
+    color: Colors.ORANGE,
+
+    fontSize: 11,
+    lineHeight: 11,
+    textTransform: 'capitalize',
   },
 });
+
+TextField.propTypes = {
+  value: PropTypes.string,
+  handleChange: PropTypes.func,
+  style: PropTypes.object,
+  name: PropTypes.string,
+  secureTextEntry: PropTypes.bool,
+  type: PropTypes.string,
+  error: PropTypes.string,
+  handleBlur: PropTypes.func,
+};
 
 export default TextField;

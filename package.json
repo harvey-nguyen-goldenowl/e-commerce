@@ -29,8 +29,11 @@
   },
   "dependencies": {
     "formik": "^2.2.9",
+    "prop-types": "^15.7.2",
     "react": "17.0.2",
-    "react-native": "0.65.1"
+    "react-native": "0.65.1",
+    "react-native-vector-icons": "^8.1.0",
+    "yup": "^0.32.9"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
