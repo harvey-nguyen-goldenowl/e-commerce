@@ -1,17 +1,21 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { StyleSheet, Text, TouchableHighlight, View } from 'react-native';
+import { StyleSheet, TouchableHighlight, View } from 'react-native';
 
 import { Colors } from '@Style';
-// import googleImage from '@Icon/google.svg';
+import GoogleIcon from '@Icon/google.svg';
+import FacebookIcon from '@Icon/facebook.svg';
 
-const SocialButton = ({ image }) => (
-  <View style={styles.container}>
-    <TouchableHighlight style={styles.button}>
-      <Text>Social</Text>
-    </TouchableHighlight>
-  </View>
-);
+const SocialButton = ({ type, style }) => {
+  const Icon = type === 'google' ? GoogleIcon : FacebookIcon;
+  return (
+    <View style={[styles.container, style]}>
+      <TouchableHighlight style={styles.button}>
+        <Icon width={24} height={24} />
+      </TouchableHighlight>
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -28,8 +32,13 @@ const styles = StyleSheet.create({
   },
 });
 
+SocialButton.defaultProps = {
+  type: 'google',
+};
+
 SocialButton.propTypes = {
-  image: PropTypes.string,
+  type: PropTypes.string,
+  style: PropTypes.object,
 };
 
 export default SocialButton;

@@ -28,10 +28,16 @@
     ]
   },
   "dependencies": {
+    "@react-navigation/bottom-tabs": "^6.0.5",
+    "@react-navigation/native": "^6.0.2",
+    "@react-navigation/native-stack": "^6.1.0",
     "formik": "^2.2.9",
     "prop-types": "^15.7.2",
     "react": "17.0.2",
     "react-native": "0.65.1",
+    "react-native-safe-area-context": "^3.3.2",
+    "react-native-screens": "^3.7.2",
+    "react-native-svg": "^12.1.1",
     "react-native-vector-icons": "^8.1.0",
     "yup": "^0.32.9"
   },
@@ -59,6 +65,7 @@
     "metro-react-native-babel-preset": "^0.66.0",
     "prettier": "^2.4.1",
     "react-native-codegen": "^0.0.7",
+    "react-native-svg-transformer": "^0.14.3",
     "react-test-renderer": "17.0.2",
     "stylelint": "^13.13.1",
     "stylelint-config-rational-order": "^0.1.2",

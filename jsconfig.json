@@ -11,11 +11,13 @@
     "strict": true,
     "strictNullChecks": true,
     "strictPropertyInitialization": true,
+    "resolveJsonModule": true,
     "paths": {
       "@Atom/*": ["src/components/atoms/*"],
       "@Component/*": ["src/components/*"],
       "@Screen/*": ["src/screens/*"],
       "@Style": ["src/styles"],
+      "@Navigation/*": ["src/navigation/*"],
       "@Icon/*": ["src/assets/icons/*"]
     }
   }

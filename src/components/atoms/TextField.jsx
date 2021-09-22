@@ -75,7 +75,7 @@ const TextField = ({ value, handleChange, style, name, secureTextEntry, type, er
         <TextInput
           style={{
             ...styles.textInput,
-            paddingTop: height / 2,
+            paddingTop: height / 3,
             borderColor: hasError ? Colors.ORANGE : undefined,
             borderWidth: hasError ? 1 : undefined,
           }}

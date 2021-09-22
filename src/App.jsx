@@ -1,11 +1,14 @@
 import React from 'react';
 import { SafeAreaView, StyleSheet } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
 
-import Login from '@Screen/Login';
+import AuthNavigation from '@Navigation/AuthNavigation';
 
 const App = () => (
   <SafeAreaView style={styles.container}>
-    <Login />
+    <NavigationContainer>
+      <AuthNavigation />
+    </NavigationContainer>
   </SafeAreaView>
 );
 

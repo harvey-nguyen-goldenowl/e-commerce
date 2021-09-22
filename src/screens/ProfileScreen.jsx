@@ -1,14 +1,16 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 
-const HelloWorld = () => (
+const ProfileScreen = ({ navigation }) => (
   <View style={styles.container}>
-    <Text>HelloWorld</Text>
+    <Text>Profile</Text>
   </View>
 );
 
 const styles = StyleSheet.create({
-  container: {},
+  container: {
+    flex: 1,
+  },
 });
 
-export default HelloWorld;
+export default ProfileScreen;

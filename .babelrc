@@ -5,12 +5,13 @@
       "module-resolver",
       {
         "root": ["./src"],
-        "extensions": [".ios.ts", ".android.ts", ".ts", ".ios.tsx", ".android.tsx", ".jsx", ".js", ".json"],
+        "extensions": [".ios.ts", ".android.ts", ".ts", ".ios.tsx", ".android.tsx", ".jsx", ".js", ".json", ".svg"],
         "alias": {
           "@Atom": "./src/components/atoms",
           "@Component": "./src/components",
           "@Screen": "./src/screens",
           "@Style": "./src/styles",
+          "@Navigation": "./src/navigation",
           "@Icon": "./src/assets/icons"
         }
       }

@@ -4,9 +4,11 @@ import { StyleSheet, Text, View } from 'react-native';
 
 import { Colors } from '@Style';
 
-const Typography = ({ value, type, style }) => (
+const Typography = ({ value, type, style, onPress }) => (
   <View style={{ ...styles.container, ...style }}>
-    <Text style={styles[type]}>{value}</Text>
+    <Text style={styles[type]} onPress={onPress}>
+      {value}
+    </Text>
   </View>
 );
 
@@ -28,6 +30,7 @@ Typography.propTypes = {
   value: PropTypes.string,
   type: PropTypes.string,
   style: PropTypes.object,
+  onPress: PropTypes.func,
 };
 
 export default Typography;
