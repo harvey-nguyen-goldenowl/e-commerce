@@ -13,6 +13,7 @@ const Tab = createBottomTabNavigator();
 
 const options = ({ route }) => {
   return {
+    headerShown: false,
     tabBarIcon: ({ focused, color, size }) => {
       let iconName = 'home';
       switch (route.name) {
@@ -34,7 +35,6 @@ const options = ({ route }) => {
         default:
       }
 
-      // You can return any component that you like here!
       return <Icon name={iconName} size={size} color={color} />;
     },
     tabBarActiveTintColor: Colors.PRIMARY,

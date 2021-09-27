@@ -1,9 +1,11 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 
+import ShopNavigation from '@Navigation/ShopNavigation';
+
 const ShopScreen = ({ navigation }) => (
   <View style={styles.container}>
-    <Text>Shop</Text>
+    <ShopNavigation />
   </View>
 );
 

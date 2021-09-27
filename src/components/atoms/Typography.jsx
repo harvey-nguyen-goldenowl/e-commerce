@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
 
 Typography.propTypes = {
   value: PropTypes.string,
-  type: PropTypes.string,
+  type: PropTypes.oneOf(['headline', 'text']),
   style: PropTypes.object,
   onPress: PropTypes.func,
 };

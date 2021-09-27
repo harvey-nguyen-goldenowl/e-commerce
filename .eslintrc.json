@@ -23,9 +23,13 @@
           // And all your import aliases
           ["@", "./src"],
           ["@Atom", "./src/components/atoms"],
+          ["@Molecule", "./src/components/molecules"],
+          ["@Organism", "./src/components/organisms"],
           ["@Screen", "./src/screens"],
+          ["@Service", "./src/services"],
           ["@Style", "./src/styles"],
           ["@Icon", "./src/assets/icons"],
+          ["@Image", "./src/assets/images"],
           ["@Navigation", "./src/navigation"]
         ],
         "extensions": [".ts", ".tsx", ".js", ".jsx", ".json", ".native.js"]

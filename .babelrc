@@ -8,12 +8,23 @@
         "extensions": [".ios.ts", ".android.ts", ".ts", ".ios.tsx", ".android.tsx", ".jsx", ".js", ".json", ".svg"],
         "alias": {
           "@Atom": "./src/components/atoms",
+          "@Molecule": "./src/components/molecules",
+          "@Organism": "./src/components/organisms",
           "@Component": "./src/components",
           "@Screen": "./src/screens",
+          "@Service": "./src/services",
           "@Style": "./src/styles",
           "@Navigation": "./src/navigation",
-          "@Icon": "./src/assets/icons"
+          "@Icon": "./src/assets/icons",
+          "@Image": "./src/assets/images"
         }
+      }
+    ],
+    [
+      "module:react-native-dotenv",
+      {
+        "moduleName": "@env",
+        "path": ".env"
       }
     ]
   ]

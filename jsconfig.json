@@ -14,11 +14,15 @@
     "resolveJsonModule": true,
     "paths": {
       "@Atom/*": ["src/components/atoms/*"],
+      "@Molecule/*": ["src/components/molecules/*"],
+      "@Organism/*": ["src/components/organisms/*"],
       "@Component/*": ["src/components/*"],
       "@Screen/*": ["src/screens/*"],
+      "@Service/*": ["src/services/*"],
       "@Style": ["src/styles"],
       "@Navigation/*": ["src/navigation/*"],
-      "@Icon/*": ["src/assets/icons/*"]
+      "@Icon/*": ["src/assets/icons/*"],
+      "@Image/*": ["src/assets/images/*"]
     }
   }
 }

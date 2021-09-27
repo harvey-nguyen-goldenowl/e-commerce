@@ -1,6 +1,6 @@
 import { useFormik } from 'formik';
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { KeyboardAvoidingView, Platform, StyleSheet, View } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import * as Yup from 'yup';
 
@@ -8,7 +8,7 @@ import PrimaryButton from '@Atom/PrimaryButton';
 import SocialButton from '@Atom/SocialButton';
 import TextField from '@Atom/TextField';
 import Typography from '@Atom/Typography';
-import { Colors } from '@Style';
+import { Colors, Font, Space } from '@Style';
 import { navigateForgotPasswordScreen, navigateMainScreen } from '@Navigation/navigate';
 
 export const validationSchema = Yup.object().shape({
@@ -55,7 +55,7 @@ const LoginScreen = ({ navigation }) => {
     navigateForgotPasswordScreen(navigation);
   };
   return (
-    <View style={styles.container}>
+    <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'} style={styles.container}>
       <View>
         <Typography value="Login" style={styles.header} type="headline" />
         {inputList.map(({ name, secureTextEntry }) => (
@@ -78,7 +78,12 @@ const LoginScreen = ({ navigation }) => {
             style={styles.spaceSmallRight}
             onPress={navigateForgotPassword}
           />
-          <Icon name="long-arrow-right" size={20} color={Colors.PRIMARY} onPress={navigateForgotPassword} />
+          <Icon
+            name="long-arrow-right"
+            size={Font.FONT_SIZE_20}
+            color={Colors.PRIMARY}
+            onPress={navigateForgotPassword}
+          />
         </View>
         <PrimaryButton text="login" onPress={navigateMain} />
       </View>
@@ -91,7 +96,7 @@ const LoginScreen = ({ navigation }) => {
           <SocialButton type="facebook" />
         </View>
       </View>
-    </View>
+    </KeyboardAvoidingView>
   );
 };
 
@@ -100,7 +105,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'space-between',
 
-    padding: 16,
+    padding: Space.SCALE_16,
 
     backgroundColor: Colors.MAIN_BACKGROUND,
   },
@@ -109,30 +114,30 @@ const styles = StyleSheet.create({
     marginBottom: '8%',
   },
   space: {
-    marginBottom: 8,
+    marginBottom: Space.SCALE_8,
   },
   right: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'flex-end',
-    marginBottom: 24,
+    marginBottom: Space.SCALE_24,
   },
   center: {
     alignItems: 'center',
-    marginBottom: 12,
+    marginBottom: Space.SCALE_12,
   },
   social: {
     flexDirection: 'row',
     justifyContent: 'center',
   },
   spaceRight: {
-    marginRight: 16,
+    marginRight: Space.SCALE_16,
   },
   spaceSmallRight: {
-    marginRight: 8,
+    marginRight: Space.SCALE_8,
   },
   footer: {
-    marginBottom: 32,
+    marginBottom: Space.SCALE_32,
   },
 });
 

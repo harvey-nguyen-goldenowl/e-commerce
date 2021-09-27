@@ -18,6 +18,7 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
 
     backgroundColor: Colors.PRIMARY,
+    opacity: 0.9,
   },
   button: {
     flex: 1,
@@ -25,8 +26,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
 
     color: Colors.WHITE,
-
-    backgroundColor: Colors.PRIMARY,
   },
   text: {
     color: Colors.WHITE,
