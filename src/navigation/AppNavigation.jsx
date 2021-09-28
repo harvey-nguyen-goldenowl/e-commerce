@@ -1,17 +1,18 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React from 'react';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { Text, View } from 'react-native';
 
 import BagScreen from '@Screen/BagScreen';
 import FavoriteScreen from '@Screen/FavoriteScreen';
+import HomeScreen from '@Screen/HomeScreen';
 import ProfileScreen from '@Screen/ProfileScreen';
 import ShopScreen from '@Screen/ShopScreen';
-import HomeScreen from '@Screen/HomeScreen';
-import { Colors } from '@Style';
+import { Colors, Font } from '@Style';
 
 const Tab = createBottomTabNavigator();
 
-const options = ({ route }) => {
+const screenOptions = ({ route }) => {
   return {
     headerShown: false,
     tabBarIcon: ({ focused, color, size }) => {
@@ -35,15 +36,27 @@ const options = ({ route }) => {
         default:
       }
 
-      return <Icon name={iconName} size={size} color={color} />;
+      return (
+        <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+          <Icon name={iconName} size={size} color={color} />
+          <Text style={{ fontSize: 10, lineHeight: 10, color }}>{route.name}</Text>
+        </View>
+      );
     },
     tabBarActiveTintColor: Colors.PRIMARY,
     tabBarInactiveTintColor: Colors.GRAY,
+    tabBarStyle: {
+      height: 83,
+      backgroundColor: Colors.WHITE,
+      borderTopLeftRadius: Font.FONT_SIZE_12,
+      borderTopRightRadius: Font.FONT_SIZE_12,
+    },
+    tabBarShowLabel: false,
   };
 };
 
 const AppNavigation = () => (
-  <Tab.Navigator screenOptions={options}>
+  <Tab.Navigator screenOptions={screenOptions}>
     <Tab.Screen name="home" component={HomeScreen} />
     <Tab.Screen name="shop" component={ShopScreen} />
     <Tab.Screen name="bag" component={BagScreen} />

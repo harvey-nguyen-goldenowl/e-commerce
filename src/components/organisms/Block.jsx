@@ -6,14 +6,14 @@ import { Colors } from '@Style';
 
 import ProductCardList from './ProductCardList';
 
-const Block = ({ title, subtitle, style }) => (
+const Block = ({ title, subtitle, style, data, isLoading }) => (
   <View style={[styles.container, style]}>
     <View style={styles.titleContainer}>
       <Text style={styles.title}>{title}</Text>
       <Text style={styles.view}> View all</Text>
     </View>
     <Text style={styles.subTitle}>{subtitle}</Text>
-    <ProductCardList style={styles.productList} />
+    <ProductCardList style={styles.productList} data={data} isLoading={isLoading} />
   </View>
 );
 
@@ -56,6 +56,8 @@ Block.propTypes = {
   title: PropTypes.string,
   subtitle: PropTypes.string,
   style: PropTypes.object,
+  data: PropTypes.array,
+  isLoading: PropTypes.bool,
 };
 
 export default Block;

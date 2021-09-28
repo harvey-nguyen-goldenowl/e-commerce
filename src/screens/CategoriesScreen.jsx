@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, View, Text, FlatList } from 'react-native';
 
 import PrimaryButton from '@Atom/PrimaryButton';
-import { Space } from '@Style';
+import { Colors, Space } from '@Style';
 
 const data = [
   { id: '1', title: 'Tops' },
@@ -28,20 +28,47 @@ const CategoriesScreen = ({ navigation }) => (
   <View style={styles.container}>
     <PrimaryButton text="view all items" />
     <Text style={styles.choose}>choose category</Text>
-    <FlatList data={data} renderItem={renderItem} keyExtractor={(item) => item.id} />
+    <FlatList
+      data={data}
+      renderItem={renderItem}
+      keyExtractor={(item) => item.id}
+      style={styles.categories}
+      ItemSeparatorComponent={() => <View style={styles.separate} />}
+    />
   </View>
 );
 
 const styles = StyleSheet.create({
   item: {},
-  title: {},
+  title: {
+    color: Colors.BLACK,
+    fontSize: 16,
+    lineHeight: 16,
+  },
   container: {
     flex: 1,
     paddingHorizontal: Space.SCALE_16,
 
     marginTop: Space.SCALE_16,
   },
-  choose: {},
+  choose: {
+    marginTop: 16,
+
+    color: Colors.GRAY,
+    fontSize: 14,
+    lineHeight: 20,
+  },
+  categories: {
+    marginTop: 32,
+  },
+  separate: {
+    borderColor: Colors.STAR_OUTLINE,
+    borderStyle: 'solid',
+    borderWidth: 0.4,
+
+    opacity: 0.25,
+    marginVertical: 16,
+  },
 });
 
 export default CategoriesScreen;

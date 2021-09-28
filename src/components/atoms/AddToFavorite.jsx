@@ -5,8 +5,6 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import { Colors, Font, Mixins, Space } from '@Style';
 
-const shadow = Mixins.boxShadow(Colors.WHITE, 0, Space.SCALE_4, Space.SCALE_4, 0.08);
-
 const AddToFavorite = ({ active, onPress, style }) => {
   const [pressed, setPressed] = useState(false);
   const onPressIn = () => {
@@ -54,7 +52,7 @@ const styles = StyleSheet.create({
     borderRadius: Space.SCALE_18,
 
     backgroundColor: Colors.WHITE,
-    ...shadow,
+    ...Mixins.boxShadow(Colors.WHITE, 0, Space.SCALE_4, Space.SCALE_4, 0.08),
   },
 });
 

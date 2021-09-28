@@ -2,6 +2,9 @@
   "compilerOptions": {
     "checkJs": true,
     "jsx": "react-native",
+    "lib": ["es6"],
+    "esModuleInterop": true,
+    "moduleResolution": "node",
     "baseUrl": ".",
     "allowUnreachableCode": false,
     "alwaysStrict": true,
