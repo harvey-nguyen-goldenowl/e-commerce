@@ -1,11 +1,32 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { StyleSheet, View, Text, Image } from 'react-native';
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
-import { Mixins, Colors, Font, Space } from '@Style';
-import StarList from '@Molecule/StarList';
 import AddToFavorite from '@Atom/AddToFavorite';
 import SaleLabel from '@Atom/SaleLabel';
+import StarList from '@Molecule/StarList';
+import {
+  BLACK,
+  boxShadow,
+  FONT_SIZE_11,
+  FONT_SIZE_14,
+  FONT_SIZE_16,
+  FONT_SIZE_8,
+  GRAY,
+  LINE_HEIGHT_11,
+  LINE_HEIGHT_16,
+  LINE_HEIGHT_20,
+  LINE_HEIGHT_8,
+  PRIMARY,
+  SCALE_10,
+  SCALE_18,
+  SCALE_4,
+  SCALE_6,
+  SCALE_8,
+  STAR_OUTLINE,
+  WHITE,
+} from '@Style';
 
 const ProductCard = ({
   sourceImage,
@@ -18,9 +39,14 @@ const ProductCard = ({
   newPrice,
   horizontal,
 }) => {
+  const navigation = useNavigation();
+  const navigateDetail = () => {
+    // @ts-ignore
+    navigation.navigate('product-nav', { screen: 'detail' });
+  };
   if (horizontal)
     return (
-      <View style={styles.spaceBottom}>
+      <TouchableOpacity style={styles.spaceBottom} onPress={navigateDetail}>
         <View style={styles.horizontalContainer}>
           <View style={styles.horizontalImageContainer}>
             <Image
@@ -45,7 +71,7 @@ const ProductCard = ({
             <AddToFavorite style={styles.horizontalFavoriteButton} active={favorite} />
           </View>
         </View>
-      </View>
+      </TouchableOpacity>
     );
 
   return (
@@ -84,11 +110,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     width: '100%',
     height: 110,
-    overflow: 'visible',
     borderRadius: 8,
+    overflow: 'visible',
 
-    backgroundColor: Colors.WHITE,
-    ...Mixins.boxShadow(Colors.WHITE, 0, 1, 25, 0.08),
+    backgroundColor: WHITE,
+    ...boxShadow(WHITE, 0, 1, 25, 0.08),
   },
   horizontalImageContainer: {
     justifyContent: 'flex-start',
@@ -112,55 +138,55 @@ const styles = StyleSheet.create({
     paddingLeft: 12,
   },
   productName: {
-    marginTop: Space.SCALE_4,
+    marginTop: SCALE_4,
 
-    color: Colors.BLACK,
-    fontSize: Font.FONT_SIZE_16,
-    lineHeight: Font.LINE_HEIGHT_16,
+    color: BLACK,
+    fontSize: FONT_SIZE_16,
+    lineHeight: LINE_HEIGHT_16,
   },
   brandName: {
-    marginTop: Space.SCALE_8,
+    marginTop: SCALE_8,
 
-    color: Colors.STAR_OUTLINE,
-    fontSize: Font.FONT_SIZE_11,
-    lineHeight: Font.LINE_HEIGHT_11,
+    color: STAR_OUTLINE,
+    fontSize: FONT_SIZE_11,
+    lineHeight: LINE_HEIGHT_11,
   },
   starContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     width: '100%',
-    marginTop: Space.SCALE_8,
+    marginTop: SCALE_8,
   },
   starList: {
     alignSelf: 'flex-start',
   },
   numberVote: {
-    color: Colors.GRAY,
-    fontSize: Font.FONT_SIZE_8,
-    lineHeight: Font.LINE_HEIGHT_8,
+    color: GRAY,
+    fontSize: FONT_SIZE_8,
+    lineHeight: LINE_HEIGHT_8,
   },
   priceContainer: {
     flexDirection: 'row',
   },
   oldPrice: {
-    marginRight: Space.SCALE_6,
+    marginRight: SCALE_6,
 
-    color: Colors.STAR_OUTLINE,
-    fontSize: Font.FONT_SIZE_14,
-    lineHeight: Font.LINE_HEIGHT_20,
+    color: STAR_OUTLINE,
+    fontSize: FONT_SIZE_14,
+    lineHeight: LINE_HEIGHT_20,
     textDecorationLine: 'line-through',
   },
   newPrice: {
-    color: Colors.PRIMARY,
-    fontSize: Font.FONT_SIZE_14,
-    lineHeight: Font.LINE_HEIGHT_20,
+    color: PRIMARY,
+    fontSize: FONT_SIZE_14,
+    lineHeight: LINE_HEIGHT_20,
   },
   horizontalFavoriteButton: {
     position: 'absolute',
     right: 0,
     bottom: 0,
 
-    transform: [{ translateY: Space.SCALE_10 }],
+    transform: [{ translateY: SCALE_10 }],
   },
   container: {},
   imageContainer: {
@@ -172,12 +198,12 @@ const styles = StyleSheet.create({
     right: 0,
     bottom: 0,
 
-    transform: [{ translateY: Space.SCALE_18 }],
+    transform: [{ translateY: SCALE_18 }],
   },
   label: {
     position: 'absolute',
-    top: Space.SCALE_8,
-    left: Space.SCALE_8,
+    top: SCALE_8,
+    left: SCALE_8,
   },
 });
 

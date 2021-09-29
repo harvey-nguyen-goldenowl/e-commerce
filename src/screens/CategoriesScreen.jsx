@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, View, Text, FlatList } from 'react-native';
 
 import PrimaryButton from '@Atom/PrimaryButton';
-import { Colors, Space } from '@Style';
+import { BLACK, GRAY, SCALE_16, STAR_OUTLINE } from '@Style';
 
 const data = [
   { id: '1', title: 'Tops' },
@@ -41,20 +41,20 @@ const CategoriesScreen = ({ navigation }) => (
 const styles = StyleSheet.create({
   item: {},
   title: {
-    color: Colors.BLACK,
+    color: BLACK,
     fontSize: 16,
     lineHeight: 16,
   },
   container: {
     flex: 1,
-    paddingHorizontal: Space.SCALE_16,
+    paddingHorizontal: SCALE_16,
 
-    marginTop: Space.SCALE_16,
+    marginTop: SCALE_16,
   },
   choose: {
     marginTop: 16,
 
-    color: Colors.GRAY,
+    color: GRAY,
     fontSize: 14,
     lineHeight: 20,
   },
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
     marginTop: 32,
   },
   separate: {
-    borderColor: Colors.STAR_OUTLINE,
+    borderColor: STAR_OUTLINE,
     borderStyle: 'solid',
     borderWidth: 0.4,
 

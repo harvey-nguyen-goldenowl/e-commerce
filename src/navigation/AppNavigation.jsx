@@ -8,7 +8,8 @@ import FavoriteScreen from '@Screen/FavoriteScreen';
 import HomeScreen from '@Screen/HomeScreen';
 import ProfileScreen from '@Screen/ProfileScreen';
 import ShopScreen from '@Screen/ShopScreen';
-import { Colors, Font } from '@Style';
+import { FONT_SIZE_12, GRAY, PRIMARY, WHITE } from '@Style';
+import DetailProductScreen from '@Screen/DetailProductScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -43,25 +44,26 @@ const screenOptions = ({ route }) => {
         </View>
       );
     },
-    tabBarActiveTintColor: Colors.PRIMARY,
-    tabBarInactiveTintColor: Colors.GRAY,
+    tabBarActiveTintColor: PRIMARY,
+    tabBarInactiveTintColor: GRAY,
     tabBarStyle: {
       height: 83,
-      backgroundColor: Colors.WHITE,
-      borderTopLeftRadius: Font.FONT_SIZE_12,
-      borderTopRightRadius: Font.FONT_SIZE_12,
+      backgroundColor: WHITE,
+      borderTopLeftRadius: FONT_SIZE_12,
+      borderTopRightRadius: FONT_SIZE_12,
     },
     tabBarShowLabel: false,
   };
 };
 
 const AppNavigation = () => (
-  <Tab.Navigator screenOptions={screenOptions}>
+  <Tab.Navigator screenOptions={screenOptions} initialRouteName="home">
     <Tab.Screen name="home" component={HomeScreen} />
     <Tab.Screen name="shop" component={ShopScreen} />
     <Tab.Screen name="bag" component={BagScreen} />
     <Tab.Screen name="favorite" component={FavoriteScreen} />
     <Tab.Screen name="profile" component={ProfileScreen} />
+    {/* <Tab.Screen name="detail" component={DetailProductScreen} /> */}
   </Tab.Navigator>
 );
 

@@ -5,7 +5,7 @@ import ForgotPasswordScreen from '@Screen/ForgotPasswordScreen';
 import LoginScreen from '@Screen/LoginScreen';
 import MainScreen from '@Screen/MainScreen';
 import SignupScreen from '@Screen/SignupScreen';
-import { Colors } from '@Style';
+import { MAIN_BACKGROUND } from '@Style';
 
 const Stack = createNativeStackNavigator();
 
@@ -14,7 +14,7 @@ const AuthNavigation = () => (
     initialRouteName="signup"
     screenOptions={{
       headerStyle: {
-        backgroundColor: Colors.MAIN_BACKGROUND,
+        backgroundColor: MAIN_BACKGROUND,
       },
       headerShadowVisible: false,
     }}

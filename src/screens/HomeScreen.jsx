@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { Image, ScrollView, StyleSheet } from 'react-native';
 
 import Block from '@Organism/Block';
-import { Mixins } from '@Style';
+import { WINDOW_WIDTH } from '@Style';
 import axios from '@Service/axios';
+import Dropdown from '@Atom/Dropdown';
 
 const HomeScreen = ({ navigation }) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -28,7 +29,7 @@ const HomeScreen = ({ navigation }) => {
   return (
     <ScrollView style={styles.container}>
       <Image source={require('@Image/banner.png')} style={styles.banner} />
-      <Block
+      {/* <Block
         style={styles.saleBlock}
         title="Sale"
         subtitle="Super summer sale"
@@ -41,7 +42,8 @@ const HomeScreen = ({ navigation }) => {
         subtitle="You’ve never seen it before!"
         data={newProduct}
         isLoading={isLoading}
-      />
+      /> */}
+      <Dropdown unSelect />
     </ScrollView>
   );
 };
@@ -51,8 +53,9 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   banner: {
-    width: '100%',
-    height: (Mixins.WINDOW_WIDTH / 3) * 2,
+    width: WINDOW_WIDTH,
+    height: undefined,
+    aspectRatio: 3 / 2,
   },
   saleBlock: {
     marginTop: 32,

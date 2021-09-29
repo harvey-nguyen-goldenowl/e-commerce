@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 
-import { Colors } from '@Style';
+import { BLACK, GRAY } from '@Style';
 
 import ProductCardList from './ProductCardList';
 
@@ -29,19 +29,19 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   title: {
-    color: Colors.BLACK,
+    color: BLACK,
     fontSize: 34,
     lineHeight: 34,
   },
   view: {
-    color: Colors.BLACK,
+    color: BLACK,
     fontSize: 11,
     lineHeight: 11,
   },
   subTitle: {
     marginTop: 4,
 
-    color: Colors.GRAY,
+    color: GRAY,
     fontSize: 11,
     lineHeight: 11,
   },

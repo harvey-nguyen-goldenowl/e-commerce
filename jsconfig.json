@@ -15,6 +15,7 @@
     "strictNullChecks": true,
     "strictPropertyInitialization": true,
     "resolveJsonModule": true,
+
     "paths": {
       "@Atom/*": ["src/components/atoms/*"],
       "@Molecule/*": ["src/components/molecules/*"],

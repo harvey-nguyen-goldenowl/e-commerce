@@ -3,11 +3,11 @@ import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import { Colors, Font } from '@Style';
+import { FONT_SIZE_12, STAR, STAR_OUTLINE } from '@Style';
 
 const Star = ({ active, size }) => {
-  if (!active) return <Icon name="star-outline" size={size} color={Colors.STAR_OUTLINE} />;
-  return <Icon name="star" size={size} color={Colors.STAR} />;
+  if (!active) return <Icon name="star-outline" size={size} color={STAR_OUTLINE} />;
+  return <Icon name="star" size={size} color={STAR} />;
 };
 
 const styles = StyleSheet.create({
@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
 });
 
 Star.defaultProps = {
-  size: Font.FONT_SIZE_12,
+  size: FONT_SIZE_12,
   active: true,
 };
 

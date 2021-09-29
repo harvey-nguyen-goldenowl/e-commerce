@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { StyleSheet, TouchableHighlight, View } from 'react-native';
 
-import { Colors } from '@Style';
+import { WHITE } from '@Style';
 import GoogleIcon from '@Icon/google.svg';
 import FacebookIcon from '@Icon/facebook.svg';
 
@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
     height: 64,
     borderRadius: 24,
 
-    backgroundColor: Colors.WHITE,
+    backgroundColor: WHITE,
   },
   button: {
     flex: 1,

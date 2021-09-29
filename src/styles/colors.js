@@ -8,3 +8,4 @@ export const PRIMARY = '#DB3022';
 export const FAVORITE_OUTLINE = '#DADADA';
 export const STAR = '#FFBA49';
 export const STAR_OUTLINE = '#9B9B9B';
+export const DROPDOWN = 'rgba(0, 0, 0, 0.2)';

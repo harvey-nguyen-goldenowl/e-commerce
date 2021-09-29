@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-import { Colors } from '@Style';
+import { BLACK } from '@Style';
 
 const Typography = ({ value, type, style, onPress }) => (
   <View style={{ ...styles.container, ...style }}>
@@ -15,7 +15,7 @@ const Typography = ({ value, type, style, onPress }) => (
 const styles = StyleSheet.create({
   container: {},
   headline: {
-    color: Colors.BLACK,
+    color: BLACK,
     fontWeight: 'bold',
     fontSize: 34,
     lineHeight: 34,

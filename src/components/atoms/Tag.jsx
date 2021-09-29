@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 
-import { Colors } from '@Style';
+import { BLACK, PRIMARY, STAR_OUTLINE, WHITE } from '@Style';
 
 const Tag = ({ style, type, size, value }) => {
   const active = type === 'active';
@@ -31,32 +31,32 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
   },
   smallActive: {
-    backgroundColor: Colors.BLACK,
+    backgroundColor: BLACK,
   },
   text: {
     fontSize: 14,
     lineHeight: 20,
   },
   activeText: {
-    color: Colors.WHITE,
+    color: WHITE,
   },
   ordinaryContainer: {
     alignItems: 'center',
     justifyContent: 'center',
     width: 100,
     height: 40,
-    borderColor: Colors.STAR_OUTLINE,
+    borderColor: STAR_OUTLINE,
     borderStyle: 'solid',
     borderWidth: 0.4,
 
     borderRadius: 8,
 
-    backgroundColor: Colors.WHITE,
+    backgroundColor: WHITE,
   },
   ordinaryActive: {
-    color: Colors.WHITE,
+    color: WHITE,
 
-    backgroundColor: Colors.PRIMARY,
+    backgroundColor: PRIMARY,
   },
 });
 
