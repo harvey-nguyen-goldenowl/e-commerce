@@ -5,6 +5,7 @@ import Block from '@Organism/Block';
 import { WINDOW_WIDTH } from '@Style';
 import axios from '@Service/axios';
 import Dropdown from '@Atom/Dropdown';
+import Tag from '@Atom/Tag';
 
 const HomeScreen = ({ navigation }) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -29,7 +30,7 @@ const HomeScreen = ({ navigation }) => {
   return (
     <ScrollView style={styles.container}>
       <Image source={require('@Image/banner.png')} style={styles.banner} />
-      {/* <Block
+      <Block
         style={styles.saleBlock}
         title="Sale"
         subtitle="Super summer sale"
@@ -42,8 +43,7 @@ const HomeScreen = ({ navigation }) => {
         subtitle="You’ve never seen it before!"
         data={newProduct}
         isLoading={isLoading}
-      /> */}
-      <Dropdown unSelect />
+      />
     </ScrollView>
   );
 };

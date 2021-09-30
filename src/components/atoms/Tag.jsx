@@ -1,22 +1,20 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 
 import { BLACK, PRIMARY, STAR_OUTLINE, WHITE } from '@Style';
 
-const Tag = ({ style, type, size, value }) => {
+const Tag = ({ style, type, size, value, onPress }) => {
   const active = type === 'active';
-  if (size === 'small')
-    return (
-      <View style={[styles.smallContainer, active ? styles.smallActive : undefined, style]}>
-        <Text style={[styles.text, active ? styles.activeText : undefined]}>{value}</Text>
-      </View>
-    );
-
-  return (
-    <View style={[styles.ordinaryContainer, active ? styles.ordinaryActive : undefined, style]}>
-      <Text style={[styles.text, active ? styles.activeText : undefined]}>{value}</Text>
-    </View>
+  const small = size === 'small';
+  return small ? (
+    <TouchableOpacity style={[styles.smallContainer, active && styles.smallActive, style]} onPress={onPress}>
+      <Text style={[styles.text, active && styles.activeText]}>{value}</Text>
+    </TouchableOpacity>
+  ) : (
+    <TouchableOpacity style={[styles.ordinaryContainer, active && styles.ordinaryActive, style]} onPress={onPress}>
+      <Text style={[styles.text, active && styles.activeText]}>{value}</Text>
+    </TouchableOpacity>
   );
 };
 
@@ -71,6 +69,7 @@ Tag.propTypes = {
   type: PropTypes.string,
   size: PropTypes.string,
   value: PropTypes.string,
+  onPress: PropTypes.func,
 };
 
 export default Tag;

@@ -1,7 +1,7 @@
+import { useNavigation } from '@react-navigation/native';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
 
 import AddToFavorite from '@Atom/AddToFavorite';
 import SaleLabel from '@Atom/SaleLabel';
@@ -12,12 +12,9 @@ import {
   FONT_SIZE_11,
   FONT_SIZE_14,
   FONT_SIZE_16,
-  FONT_SIZE_8,
-  GRAY,
   LINE_HEIGHT_11,
   LINE_HEIGHT_16,
   LINE_HEIGHT_20,
-  LINE_HEIGHT_8,
   PRIMARY,
   SCALE_10,
   SCALE_18,
@@ -27,6 +24,7 @@ import {
   STAR_OUTLINE,
   WHITE,
 } from '@Style';
+import Typography from '@Atom/Typography';
 
 const ProductCard = ({
   sourceImage,
@@ -59,10 +57,9 @@ const ProductCard = ({
           </View>
           <View style={styles.horizontalContent}>
             <Text style={styles.productName}>{productName}</Text>
-            <Text style={styles.brandName}>{brandName}</Text>
+            <Typography type="subTitle" value={brandName} style={styles.brandName} />
             <View style={styles.starContainer}>
-              <StarList numberStar={starNumber} style={styles.starList} />
-              <Text style={styles.numberVote}> ({voteNumber})</Text>
+              <StarList numberStar={starNumber} style={styles.starList} voteNumber={voteNumber} />
             </View>
             <View style={styles.priceContainer}>
               <Text style={styles.oldPrice}>{oldPrice}</Text>
@@ -87,10 +84,9 @@ const ProductCard = ({
         <SaleLabel value="-20%" style={styles.label} />
       </View>
       <View style={styles.starContainer}>
-        <StarList numberStar={starNumber} style={styles.starList} />
-        <Text style={styles.numberVote}> ({voteNumber})</Text>
+        <StarList numberStar={starNumber} style={styles.starList} voteNumber={voteNumber} />
       </View>
-      <Text style={styles.brandName}>{brandName}</Text>
+      <Typography type="subTitle" value={brandName} style={styles.brandName} />
       <Text style={styles.productName}>{productName}</Text>
       <View style={styles.priceContainer}>
         <Text style={styles.oldPrice}>{oldPrice}</Text>
@@ -146,10 +142,6 @@ const styles = StyleSheet.create({
   },
   brandName: {
     marginTop: SCALE_8,
-
-    color: STAR_OUTLINE,
-    fontSize: FONT_SIZE_11,
-    lineHeight: LINE_HEIGHT_11,
   },
   starContainer: {
     flexDirection: 'row',
@@ -159,11 +151,6 @@ const styles = StyleSheet.create({
   },
   starList: {
     alignSelf: 'flex-start',
-  },
-  numberVote: {
-    color: GRAY,
-    fontSize: FONT_SIZE_8,
-    lineHeight: LINE_HEIGHT_8,
   },
   priceContainer: {
     flexDirection: 'row',

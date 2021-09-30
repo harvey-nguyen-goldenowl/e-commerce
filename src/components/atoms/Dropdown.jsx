@@ -5,8 +5,8 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 import { ORANGE, STAR_OUTLINE, WHITE } from '@Style';
 
-const Dropdown = ({ title, value, style }) => (
-  <TouchableOpacity style={[styles.container, title === value && styles.nonSelect, style]}>
+const Dropdown = ({ title, value, style, onPress }) => (
+  <TouchableOpacity style={[styles.container, title === value && styles.nonSelect, style]} onPress={onPress}>
     <Text>{value}</Text>
     <Icon name="chevron-down" />
   </TouchableOpacity>
@@ -38,6 +38,7 @@ Dropdown.propTypes = {
   style: PropTypes.object,
   title: PropTypes.string,
   value: PropTypes.string,
+  onPress: PropTypes.func,
 };
 
 export default Dropdown;

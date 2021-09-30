@@ -4,8 +4,8 @@ import { StyleSheet, Text, TouchableHighlight, View } from 'react-native';
 
 import { GREEN, PRIMARY, WHITE } from '@Style';
 
-const PrimaryButton = ({ text, onPress }) => (
-  <View style={styles.container}>
+const PrimaryButton = ({ text, onPress, style }) => (
+  <View style={[styles.container, style]}>
     <TouchableHighlight onPress={onPress} style={styles.button} activeOpacity={0.9} underlayColor={GREEN}>
       <Text style={styles.text}>{text}</Text>
     </TouchableHighlight>
@@ -38,6 +38,7 @@ const styles = StyleSheet.create({
 PrimaryButton.propTypes = {
   text: PropTypes.string,
   onPress: PropTypes.func,
+  style: PropTypes.object,
 };
 
 export default PrimaryButton;
