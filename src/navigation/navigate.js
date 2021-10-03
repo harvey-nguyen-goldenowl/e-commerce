@@ -25,3 +25,14 @@ export const navigateDetailProduct = (
     },
   });
 };
+export const navigateRating = (
+  /** @type {{ navigate: (route: string, arg1: { screen: string; params: { id: any; }; }) => void; }} */ navigation,
+  /** @type {any} */ id,
+) => {
+  navigation.navigate('product-nav', {
+    screen: 'rating',
+    params: {
+      id,
+    },
+  });
+};

@@ -1,12 +1,19 @@
+import { TextStyle } from 'react-native';
+
 import { scaleFont } from './mixins';
 
 // FONT FAMILY
+/** @type {TextStyle["fontFamily"]} */
 export const FONT_FAMILY_REGULAR = 'Roboto-Regular';
+/** @type {TextStyle["fontFamily"]} */
 export const FONT_FAMILY_BOLD = 'Roboto-Bold';
 
 // FONT WEIGHT
+
+/** @type {TextStyle['fontWeight']} */
 export const FONT_WEIGHT_REGULAR = '400';
-export const FONT_WEIGHT_BOLD = '700';
+/** @type {TextStyle['fontWeight']} */
+export const FONT_WEIGHT_BOLD = 'bold';
 
 // FONT SIZE
 export const FONT_SIZE_36 = scaleFont(36);

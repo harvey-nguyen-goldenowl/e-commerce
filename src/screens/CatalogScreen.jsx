@@ -1,30 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import {
-  ActivityIndicator,
-  FlatList,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableHighlight,
-  TouchableOpacity,
-  View,
-} from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
-import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { ActivityIndicator, FlatList, ScrollView, StyleSheet, Text, TouchableHighlight, View } from 'react-native';
 
 import BottomModal from '@Atom/BottomModal';
-import Tag from '@Atom/Tag';
-import Typography from '@Atom/Typography';
 import ProductCard from '@Organism/ProductCard';
 import axios from '@Service/axios';
 import { BLACK, boxShadow, GREEN, MAIN_BACKGROUND, PRIMARY, SCALE_12, SCALE_32, SCALE_8, WHITE } from '@Style';
-
-const tagList = [
-  { id: '1', title: 'T-shirts' },
-  { id: '2', title: 'Crop tops' },
-  { id: '3', title: 'Sleeveless' },
-  { id: '4', title: 'Shirts' },
-];
+import Header from '@Organism/Header';
 
 const sortByList = [
   { id: '1', title: 'Popular' },
@@ -61,35 +42,7 @@ const CatalogScreen = ({ navigation }) => {
   };
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <Typography value="Women’s tops" type="headline" style={styles.title} />
-
-        <ScrollView style={styles.tagList} horizontal showsHorizontalScrollIndicator={false}>
-          {tagList.map(({ id, title }) => (
-            <Tag value={title} size="small" type="active" style={styles.tag} key={id} />
-          ))}
-        </ScrollView>
-
-        <View style={styles.actionBar}>
-          <View style={styles.filter}>
-            <Icon name="filter" style={styles.icon} size={24} />
-            <Text style={styles.textIcon}>Filters</Text>
-          </View>
-          <TouchableOpacity
-            style={styles.price}
-            onPress={() => {
-              setModalVisible(true);
-              console.log('press');
-            }}
-          >
-            <MaterialIcon name="swap-vertical" style={styles.icon} size={24} />
-            <Text style={styles.textIcon}>{sortByList.find((item) => item.id === idSort)?.title}</Text>
-          </TouchableOpacity>
-          <View style={styles.view}>
-            <MaterialIcon name="view-module" style={styles.icon} size={24} />
-          </View>
-        </View>
-      </View>
+      <Header />
 
       {isLoading ? (
         <ActivityIndicator style={styles.loading} size="large" />

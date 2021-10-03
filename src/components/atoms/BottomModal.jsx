@@ -2,9 +2,9 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Modal, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
-import { BLACK, boxShadow, DROPDOWN, GRAY, WHITE } from '@Style';
+import { BLACK, boxShadow, DROPDOWN, GRAY, MAIN_BACKGROUND, WHITE } from '@Style';
 
-const BottomModal = ({ children, title, show, closeModal, style }) => (
+const BottomModal = ({ children, title, show, closeModal, style, height }) => (
   <View style={[styles.container, style]}>
     <Modal
       animationType="fade"
@@ -14,14 +14,13 @@ const BottomModal = ({ children, title, show, closeModal, style }) => (
         closeModal();
       }}
     >
-      <View style={styles.modal}>
-        <TouchableOpacity style={{ height: '55%' }} onPress={closeModal} />
-        <View style={styles.option}>
+      <TouchableOpacity style={styles.modal} onPress={closeModal}>
+        <View style={{ ...styles.option, height: `${height}%` }}>
           <View style={styles.bar} />
           <Text style={styles.title}>{title}</Text>
           {children}
         </View>
-      </View>
+      </TouchableOpacity>
     </Modal>
   </View>
 );
@@ -30,17 +29,17 @@ const styles = StyleSheet.create({
   modal: {
     flex: 1,
     justifyContent: 'flex-end',
+    borderWidth: 1,
 
     backgroundColor: DROPDOWN,
   },
   option: {
     alignItems: 'center',
     width: '100%',
-    height: '45%',
     borderTopLeftRadius: 34,
     borderTopRightRadius: 34,
 
-    backgroundColor: WHITE,
+    backgroundColor: MAIN_BACKGROUND,
     opacity: 1,
     ...boxShadow(WHITE, 0, -4, 30, 0.08),
   },
@@ -61,7 +60,9 @@ const styles = StyleSheet.create({
   },
 });
 
-BottomModal.defaultProps = {};
+BottomModal.defaultProps = {
+  height: 45,
+};
 
 BottomModal.propTypes = {
   children: PropTypes.node,
@@ -69,6 +70,7 @@ BottomModal.propTypes = {
   title: PropTypes.string,
   show: PropTypes.bool,
   closeModal: PropTypes.func,
+  height: PropTypes.number,
 };
 
 export default BottomModal;

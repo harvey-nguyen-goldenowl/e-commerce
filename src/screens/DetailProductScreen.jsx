@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, View, Text, ScrollView, Image } from 'react-native';
+import { StyleSheet, View, Text, ScrollView, Image, TouchableHighlight, TouchableOpacity } from 'react-native';
 import { useHeaderHeight } from '@react-navigation/elements';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
@@ -14,6 +14,7 @@ import Block from '@Organism/Block';
 import ProductCardList from '@Organism/ProductCardList';
 import BottomModal from '@Atom/BottomModal';
 import Tag from '@Atom/Tag';
+import { navigateRating } from '@Navigation/navigate';
 
 const linkImage =
   'https://lh3.googleusercontent.com/fife/AAWUweUBDk_9zkM7h2sZQ9lSGMUNwtACNH4KMz9R-LWlyjcYHlZhwfmk1sDDkKyHZc6gtG8RWUgk11kqXXsdQCKpWwp7mgQAvqosZCUeBSHBT-VGtjVJjd0z6HwyEns5-vHmlN8CvbBtKpXaHhoRdWqw-5I_YHls08AKfRvA2O1pqkzg1ZTR6huA_so_bZuK_m6oqFWQWi7YsVJgbxMJ7HusufXxOhyHc6vhre-EGxAVr8yeP6ml4VTjuLq7y_XApGHPgOjmLrWM_DEbJDhhAjjc_bkPMspXll4fH-TOnSlc8ANvRm99KUV8yopka81MDLo8xGlb6L5M9Gf-GZjNkdNlExDow-feXwlVtB5kuViWAxbQTzvHfvjN4seM71SgfWYaHCDYgjQkK2-5k_MtSug2O7MbxGxkV1zWJLVoA97s8gWzETuTpg97Sd7PHc-sG_tjm0XBnzV9x98dXASsrIkQdU7lnXxHh8COZpSySC8kcplFM599W_A0di4gpC50gkI9DuFsd7SZvDM1bOaeV_VrHUek6hrSpARdtLHfDZIfguH3sp2B4cCsc0b1CTASFP4qwj_gQB0-bKpSWq3cwNStbDkeHpuJAZ-HeLpzySPjXRbfmoeF0pw2selX68s1UfL7-ktbVAGNzFL5HqJU2qL1O1lGJ-QL-lpPCpYbECczJdnV0lBl0WtwKi7NdDewRd0d_XDsc6acpLX7_9gytbv5177xuw=s826-w550-h826-no?authuser=0&authuser=0';
@@ -26,6 +27,7 @@ const DetailProductScreen = ({ navigation }) => {
   const [newProduct, setNewProduct] = useState([]);
   const [size, setSize] = useState('Size');
   const [modalVisible, setModalVisible] = useState(false);
+
   useEffect(() => {
     setIsLoading(true);
     axios
@@ -45,17 +47,33 @@ const DetailProductScreen = ({ navigation }) => {
   const openModalSelectSize = () => {
     setModalVisible(true);
   };
+  const goReview = () => {
+    navigateRating(navigation);
+    // console.log('press');
+  };
   return (
     <View style={styles.container}>
       <ScrollView style={styles.scrollView}>
-        <View style={styles.imageContainer}>
+        <ScrollView style={styles.imageContainer} horizontal showsHorizontalScrollIndicator={false}>
           <Image
             style={styles.image}
             source={{
               uri: linkImage,
             }}
           />
-        </View>
+          <Image
+            style={styles.image}
+            source={{
+              uri: linkImage,
+            }}
+          />
+          <Image
+            style={styles.image}
+            source={{
+              uri: linkImage,
+            }}
+          />
+        </ScrollView>
         <View style={{ ...styles.detail, height: WINDOW_HEIGHT * 0.45 - headerHeight }}>
           <View style={styles.action}>
             <Dropdown value={size} title="Size" style={styles.dropdown} onPress={openModalSelectSize} />
@@ -64,12 +82,14 @@ const DetailProductScreen = ({ navigation }) => {
           </View>
 
           <View style={styles.titleContainer}>
-            <Text style={styles.title}>H&M</Text>
+            <TouchableOpacity style={styles.headerContent} onPress={goReview}>
+              <Text style={styles.title}>H&M</Text>
+              <Typography type="subTitle" value="Short black dress" />
+              <StarList numberStar={5} numberStarActive={5} voteNumber={10} />
+            </TouchableOpacity>
             <Text style={styles.title}>$19.99</Text>
           </View>
-          <Typography type="subTitle" value="Short black dress" />
 
-          <StarList numberStar={5} voteNumber={10} />
           <Text style={styles.description}>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur voluptatem ipsa fugit, autem accusantium
           </Text>
@@ -93,16 +113,20 @@ const DetailProductScreen = ({ navigation }) => {
       </ScrollView>
 
       {modalVisible && (
-        <BottomModal title="Seclect size">
+        <BottomModal
+          title="Seclect size"
+          closeModal={() => {
+            setModalVisible(false);
+          }}
+        >
           <View style={styles.modalContainer}>
             <View style={styles.list}>
               {listSize.map((item, index) => (
                 <Tag
                   key={item}
                   value={item}
-                  style={{ marginLeft: index % 3 !== 0 ? space : 0, marginTop: 16 }}
+                  style={{ marginLeft: index % 3 !== 0 ? space : 0, marginTop: 16, flexBasis: '26%' }}
                   onPress={() => {
-                    console.log(item);
                     setSize(item);
                     setModalVisible(false);
                   }}
@@ -115,7 +139,13 @@ const DetailProductScreen = ({ navigation }) => {
             <Icon name="chevron-right" />
           </View>
           <View style={styles.modalContainer}>
-            <PrimaryButton text="Add to cart" style={styles.add} />
+            <PrimaryButton
+              text="Add to cart"
+              style={styles.add}
+              onPress={() => {
+                setModalVisible(false);
+              }}
+            />
           </View>
         </BottomModal>
       )}
@@ -150,6 +180,7 @@ const styles = StyleSheet.create({
   dropdown: {
     width: '35%',
   },
+  headerContent: {},
   titleContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -209,6 +240,7 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
 
     justifyContent: 'flex-start',
+    width: '100%',
   },
   add: {
     width: '100%',

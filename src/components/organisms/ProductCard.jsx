@@ -36,12 +36,48 @@ const ProductCard = ({
   oldPrice,
   newPrice,
   horizontal,
+  type,
 }) => {
   const navigation = useNavigation();
   const navigateDetail = () => {
     // @ts-ignore
     navigation.navigate('product-nav', { screen: 'detail' });
   };
+  if (type === 'favorite') {
+    if (horizontal) {
+      <TouchableOpacity style={styles.spaceBottom} onPress={navigateDetail}>
+        <View style={styles.horizontalContainer}>
+          <View style={styles.horizontalImageContainer}>
+            <Image
+              source={{
+                uri: sourceImage,
+              }}
+              style={[styles.image, styles.horizontalImage]}
+            />
+            {/* <SaleLabel value="-20%" style={styles.horizontalLabel} /> */}
+          </View>
+          <View style={styles.horizontalContent}>
+            <Typography type="subTitle" value={brandName} style={styles.brandName} />
+            <Text style={styles.productName}>{productName}</Text>
+            <View style={styles.option}>
+              <Text style={styles.color}>Color:Blue</Text>
+              <Text style={styles.size}>Size:L</Text>
+            </View>
+            <View style={{ flexDirection: 'row' }}>
+              <View style={styles.starContainer}>
+                <StarList numberStar={starNumber} style={styles.starList} voteNumber={voteNumber} />
+              </View>
+              <View style={styles.priceContainer}>
+                <Text style={styles.oldPrice}>{oldPrice}</Text>
+                <Text style={styles.newPrice}>{newPrice}</Text>
+              </View>
+            </View>
+            <AddToFavorite style={styles.horizontalFavoriteButton} active={favorite} />
+          </View>
+        </View>
+      </TouchableOpacity>;
+    }
+  }
   if (horizontal)
     return (
       <TouchableOpacity style={styles.spaceBottom} onPress={navigateDetail}>
@@ -84,7 +120,7 @@ const ProductCard = ({
         <SaleLabel value="-20%" style={styles.label} />
       </View>
       <View style={styles.starContainer}>
-        <StarList numberStar={starNumber} style={styles.starList} voteNumber={voteNumber} />
+        <StarList numberStarActive={starNumber} style={styles.starList} voteNumber={voteNumber} />
       </View>
       <Typography type="subTitle" value={brandName} style={styles.brandName} />
       <Text style={styles.productName}>{productName}</Text>
@@ -133,6 +169,9 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingLeft: 12,
   },
+  brandName: {
+    marginTop: SCALE_8,
+  },
   productName: {
     marginTop: SCALE_4,
 
@@ -140,9 +179,9 @@ const styles = StyleSheet.create({
     fontSize: FONT_SIZE_16,
     lineHeight: LINE_HEIGHT_16,
   },
-  brandName: {
-    marginTop: SCALE_8,
-  },
+  option: {},
+  color: {},
+  size: {},
   starContainer: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -206,6 +245,7 @@ ProductCard.propTypes = {
   oldPrice: PropTypes.string,
   newPrice: PropTypes.string,
   horizontal: PropTypes.bool,
+  type: PropTypes.string,
 };
 
 export default ProductCard;

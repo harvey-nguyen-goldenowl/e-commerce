@@ -1,7 +1,7 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React from 'react';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { Text, View } from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import BagScreen from '@Screen/BagScreen';
 import FavoriteScreen from '@Screen/FavoriteScreen';
@@ -9,7 +9,6 @@ import HomeScreen from '@Screen/HomeScreen';
 import ProfileScreen from '@Screen/ProfileScreen';
 import ShopScreen from '@Screen/ShopScreen';
 import { FONT_SIZE_12, GRAY, PRIMARY, WHITE } from '@Style';
-import DetailProductScreen from '@Screen/DetailProductScreen';
 
 const Tab = createBottomTabNavigator();
 
