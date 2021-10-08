@@ -4,7 +4,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-import { Colors, Font, Space } from '@Style';
+import { FONT_SIZE_20, MAIN_BACKGROUND, PRIMARY, SCALE_12, SCALE_16, SCALE_24, SCALE_32, SCALE_8 } from '@Style';
 import TextField from '@Atom/TextField';
 import Typography from '@Atom/Typography';
 import PrimaryButton from '@Atom/PrimaryButton';
@@ -84,7 +84,7 @@ const SignupScreen = ({ navigation }) => {
             style={styles.spaceSmallRight}
             onPress={navigateLogin}
           />
-          <Icon name="long-arrow-right" size={Font.FONT_SIZE_20} color={Colors.PRIMARY} onPress={navigateLogin} />
+          <Icon name="long-arrow-right" size={FONT_SIZE_20} color={PRIMARY} onPress={navigateLogin} />
         </View>
         <PrimaryButton text="Sign up" onPress={navigateMain} />
       </View>
@@ -106,39 +106,39 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'space-between',
 
-    padding: Space.SCALE_16,
+    padding: SCALE_16,
 
-    backgroundColor: Colors.MAIN_BACKGROUND,
+    backgroundColor: MAIN_BACKGROUND,
   },
   header: {
     marginTop: '10%',
     marginBottom: '8%',
   },
   space: {
-    marginBottom: Space.SCALE_8,
+    marginBottom: SCALE_8,
   },
   right: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'flex-end',
-    marginBottom: Space.SCALE_24,
+    marginBottom: SCALE_24,
   },
   center: {
     alignItems: 'center',
-    marginBottom: Space.SCALE_12,
+    marginBottom: SCALE_12,
   },
   social: {
     flexDirection: 'row',
     justifyContent: 'center',
   },
   spaceRight: {
-    marginRight: Space.SCALE_16,
+    marginRight: SCALE_16,
   },
   spaceSmallRight: {
-    marginRight: Space.SCALE_8,
+    marginRight: SCALE_8,
   },
   footer: {
-    marginBottom: Space.SCALE_32,
+    marginBottom: SCALE_32,
   },
 });
 

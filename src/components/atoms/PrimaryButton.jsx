@@ -2,11 +2,11 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { StyleSheet, Text, TouchableHighlight, View } from 'react-native';
 
-import { Colors } from '@Style';
+import { GREEN, PRIMARY, WHITE } from '@Style';
 
-const PrimaryButton = ({ text, onPress }) => (
-  <View style={styles.container}>
-    <TouchableHighlight onPress={onPress} style={styles.button} activeOpacity={0.9} underlayColor={Colors.GREEN}>
+const PrimaryButton = ({ text, onPress, style }) => (
+  <View style={[styles.container, style]}>
+    <TouchableHighlight onPress={onPress} style={styles.button} activeOpacity={0.9} underlayColor={GREEN}>
       <Text style={styles.text}>{text}</Text>
     </TouchableHighlight>
   </View>
@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     overflow: 'hidden',
 
-    backgroundColor: Colors.PRIMARY,
+    backgroundColor: PRIMARY,
     opacity: 0.9,
   },
   button: {
@@ -25,10 +25,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
 
-    color: Colors.WHITE,
+    color: WHITE,
   },
   text: {
-    color: Colors.WHITE,
+    color: WHITE,
     fontSize: 14,
     lineHeight: 20,
     textTransform: 'uppercase',
@@ -38,6 +38,7 @@ const styles = StyleSheet.create({
 PrimaryButton.propTypes = {
   text: PropTypes.string,
   onPress: PropTypes.func,
+  style: PropTypes.object,
 };
 
 export default PrimaryButton;

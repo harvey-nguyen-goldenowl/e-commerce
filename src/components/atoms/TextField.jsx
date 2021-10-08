@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Animated, StyleSheet, Text, TextInput, View } from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
 
-import { Colors } from '@Style';
+import { GRAY, GREEN, ORANGE, WHITE } from '@Style';
 
 const TextField = ({ value, handleChange, style, name, secureTextEntry, type, error, handleBlur }) => {
   // Hook states
@@ -56,18 +56,9 @@ const TextField = ({ value, handleChange, style, name, secureTextEntry, type, er
   let icon = null;
   const hasError = type === 'error';
   if (type === 'success')
-    icon = (
-      <Icon name="check" size={20} color={Colors.GREEN} style={{ ...styles.check, transform: [{ translateY: -10 }] }} />
-    );
+    icon = <Icon name="check" size={20} color={GREEN} style={{ ...styles.check, transform: [{ translateY: -10 }] }} />;
   if (hasError)
-    icon = (
-      <Icon
-        name="close"
-        size={20}
-        color={Colors.ORANGE}
-        style={{ ...styles.check, transform: [{ translateY: -10 }] }}
-      />
-    );
+    icon = <Icon name="close" size={20} color={ORANGE} style={{ ...styles.check, transform: [{ translateY: -10 }] }} />;
 
   return (
     <View style={{ ...styles.container, ...style }}>
@@ -76,7 +67,7 @@ const TextField = ({ value, handleChange, style, name, secureTextEntry, type, er
           style={{
             ...styles.textInput,
             paddingTop: height / 3,
-            borderColor: hasError ? Colors.ORANGE : undefined,
+            borderColor: hasError ? ORANGE : undefined,
             borderWidth: hasError ? 1 : undefined,
           }}
           onFocus={focusHandle}
@@ -87,7 +78,7 @@ const TextField = ({ value, handleChange, style, name, secureTextEntry, type, er
           secureTextEntry={secureTextEntry}
         />
         <Animated.Text
-          style={{ ...styles.label, fontSize, lineHeight, top, color: hasError ? Colors.ORANGE : Colors.GRAY }}
+          style={{ ...styles.label, fontSize, lineHeight, top, color: hasError ? ORANGE : GRAY }}
           onPress={focusHandle}
         >
           {name}
@@ -118,7 +109,7 @@ const styles = StyleSheet.create({
 
     fontSize: 14,
 
-    backgroundColor: Colors.WHITE,
+    backgroundColor: WHITE,
   },
   label: {
     position: 'absolute',
@@ -126,7 +117,7 @@ const styles = StyleSheet.create({
 
     height: 20,
 
-    color: Colors.GRAY,
+    color: GRAY,
     textTransform: 'capitalize',
   },
   check: {
@@ -140,7 +131,7 @@ const styles = StyleSheet.create({
 
     paddingLeft: 20,
 
-    color: Colors.ORANGE,
+    color: ORANGE,
 
     fontSize: 11,
     lineHeight: 11,

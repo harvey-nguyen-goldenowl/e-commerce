@@ -3,9 +3,7 @@ import React, { useState } from 'react';
 import { StyleSheet, TouchableHighlight } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import { Colors, Font, Mixins, Space } from '@Style';
-
-const shadow = Mixins.boxShadow(Colors.WHITE, 0, Space.SCALE_4, Space.SCALE_4, 0.08);
+import { boxShadow, FAVORITE_OUTLINE, FONT_SIZE_12, PRIMARY, SCALE_18, SCALE_36, SCALE_4, WHITE } from '@Style';
 
 const AddToFavorite = ({ active, onPress, style }) => {
   const [pressed, setPressed] = useState(false);
@@ -22,12 +20,12 @@ const AddToFavorite = ({ active, onPress, style }) => {
         onPressIn={onPressIn}
         onPressOut={onPressOut}
         onPress={onPress}
-        underlayColor={Colors.PRIMARY}
+        underlayColor={PRIMARY}
       >
         <Icon
           name={pressed ? 'heart' : 'heart-outline'}
-          size={Font.FONT_SIZE_12}
-          color={pressed ? Colors.WHITE : Colors.FAVORITE_OUTLINE}
+          size={FONT_SIZE_12}
+          color={pressed ? WHITE : FAVORITE_OUTLINE}
         />
       </TouchableHighlight>
     );
@@ -38,9 +36,9 @@ const AddToFavorite = ({ active, onPress, style }) => {
       onPressIn={onPressIn}
       onPressOut={onPressOut}
       onPress={onPress}
-      underlayColor={Colors.PRIMARY}
+      underlayColor={PRIMARY}
     >
-      <Icon name="heart" size={Font.FONT_SIZE_12} color={pressed ? Colors.WHITE : Colors.PRIMARY} />
+      <Icon name="heart" size={FONT_SIZE_12} color={pressed ? WHITE : PRIMARY} />
     </TouchableHighlight>
   );
 };
@@ -49,12 +47,12 @@ const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
     justifyContent: 'center',
-    width: Space.SCALE_36,
-    height: Space.SCALE_36,
-    borderRadius: Space.SCALE_18,
+    width: SCALE_36,
+    height: SCALE_36,
+    borderRadius: SCALE_18,
 
-    backgroundColor: Colors.WHITE,
-    ...shadow,
+    backgroundColor: WHITE,
+    ...boxShadow(WHITE, 0, SCALE_4, SCALE_4, 0.08),
   },
 });
 

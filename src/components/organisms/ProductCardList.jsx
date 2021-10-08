@@ -1,29 +1,11 @@
 import PropTypes from 'prop-types';
-import React, { useEffect, useState } from 'react';
-import { StyleSheet, View, Text, FlatList, ActivityIndicator } from 'react-native';
-
-import axios from '@Service/axios';
+import React from 'react';
+import { ActivityIndicator, FlatList, StyleSheet, View } from 'react-native';
 
 import ProductCard from './ProductCard';
 
 const renderItem = ({ item }) => <ProductCard {...item} />;
-const ProductCardList = ({ style }) => {
-  const [data, setData] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  useEffect(() => {
-    const fetchProduct = async () => {
-      try {
-        setIsLoading(true);
-        const res = await axios.get('/fashion/product');
-        setData(res.data.listProduct);
-        setIsLoading(false);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchProduct();
-  }, []);
-
+const ProductCardList = ({ style, data, isLoading }) => {
   if (isLoading) return <ActivityIndicator style={styles.loading} size="large" />;
 
   return (
@@ -53,6 +35,8 @@ ProductCardList.defaultProps = {};
 
 ProductCardList.propTypes = {
   style: PropTypes.object,
+  data: PropTypes.array,
+  isLoading: PropTypes.bool,
 };
 
 export default ProductCardList;

@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 
-import { Colors } from '@Style';
+import { PRIMARY, WHITE } from '@Style';
 
 const SaleLabel = ({ value, style }) => (
   <View style={[styles.container, style]}>
@@ -20,10 +20,10 @@ const styles = StyleSheet.create({
     padding: 6,
     borderRadius: 29,
 
-    backgroundColor: Colors.PRIMARY,
+    backgroundColor: PRIMARY,
   },
   text: {
-    color: Colors.WHITE,
+    color: WHITE,
     fontSize: 11,
     lineHeight: 11,
   },

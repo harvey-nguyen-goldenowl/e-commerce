@@ -1,13 +1,10 @@
-import PropTypes from 'prop-types';
 import React from 'react';
-import { StyleSheet, View, Text, TouchableHighlight } from 'react-native';
+import { StyleSheet, Text, TouchableHighlight } from 'react-native';
 
-import { Colors, Mixins, Space } from '@Style';
-
-const boxShadow = Mixins.boxShadow('#DB30222', 0, 4, 4, 0.16);
+import { boxShadow, PRIMARY, SCALE_18, SCALE_36 } from '@Style';
 
 const AddToBag = () => (
-  <TouchableHighlight style={{ ...styles.container, ...boxShadow }}>
+  <TouchableHighlight style={{ ...styles.container }}>
     <Text>Add</Text>
   </TouchableHighlight>
 );
@@ -16,12 +13,13 @@ const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
     justifyContent: 'center',
-    width: Space.SCALE_36,
-    height: Space.SCALE_36,
-    borderRadius: Space.SCALE_18,
+    width: SCALE_36,
+    height: SCALE_36,
+    borderRadius: SCALE_18,
 
-    backgroundColor: Colors.PRIMARY,
+    backgroundColor: PRIMARY,
     opacity: 0.9,
+    ...boxShadow('#DB30222', 0, 4, 4, 0.16),
   },
 });
 
